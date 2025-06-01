@@ -1,0 +1,23 @@
+.note-input {
+  max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.note-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  width: 250px;
+  background: #fff;
+}
