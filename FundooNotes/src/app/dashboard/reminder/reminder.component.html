@@ -1,0 +1,7 @@
+<div class="reminder-grid">
+  <div class="note-card" *ngFor="let note of reminders">
+    <h4>{{ note.title }}</h4>
+    <p>{{ note.description }}</p>
+    <small>Reminder: {{ note.reminder | date:'short' }}</small>
+  </div>
+</div>
