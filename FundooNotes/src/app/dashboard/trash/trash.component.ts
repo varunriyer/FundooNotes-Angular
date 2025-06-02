@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { NotesService } from 'src/app/core/services/notes.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-trash',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './trash.component.html',
   styleUrls: ['./trash.component.css']
 })
 export class TrashComponent implements OnInit {
-  trashedNotes: any[] = [];
+  trashedNotes = [
+    {
+      title: 'Old Shopping List',
+      description: '☐ Milk\n☐ Bread\n☐ Eggs\n☐ Peanut butter'
+    },
+    {
+      title: 'Rejected Project Idea',
+      description: 'AI-based dog translator\nToo ambitious for this semester.'
+    }
+  ];
 
-  constructor(private notesService: NotesService) {}
+  recoverNote(note: any) {
+  alert('Note recovered (placeholder).');
+}
 
-  ngOnInit(): void {
-    this.notesService.getTrashNotesList().subscribe((res: any) => {
-      this.trashedNotes = res.data.data;
-    });
-  }
 
-  restore(note: any) {
-    const data = { noteIdList: [note.id], isDeleted: false };
-    this.notesService.trashNote(data).subscribe(() => {
-      this.ngOnInit();
-    });
-  }
-
-  deleteForever(note: any) {
-    this.notesService.deleteNote({ noteIdList: [note.id] }).subscribe(() => {
-      this.ngOnInit();
-    });
-  }
+  ngOnInit(): void {}
 }

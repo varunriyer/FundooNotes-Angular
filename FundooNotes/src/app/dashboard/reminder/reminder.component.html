@@ -1,7 +1,9 @@
-<div class="reminder-grid">
-  <div class="note-card" *ngFor="let note of reminders">
-    <h4>{{ note.title }}</h4>
-    <p>{{ note.description }}</p>
-    <small>Reminder: {{ note.reminder | date:'short' }}</small>
+<h2 class="heading">Reminders</h2>
+
+<div class="reminder-container">
+  <div class="reminder-card" *ngFor="let reminder of reminders">
+    <h3>{{ reminder.title }}</h3>
+    <p>{{ reminder.description }}</p>
+    <small> {{ reminder.due }}</small>
   </div>
 </div>

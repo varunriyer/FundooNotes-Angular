@@ -1,40 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import { NotesService } from 'src/app/core/services/notes.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+interface Note {
+  title: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-notes',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
-  notes: any[] = [];
-  title = '';
-  description = '';
-
-  constructor(private notesService: NotesService) {}
+  notes: Note[] = [];
+  title: string = '';
+  description: string = '';
 
   ngOnInit(): void {
-    this.fetchNotes();
+    this.notes = [
+      {
+        title: 'NETFLIX',
+        description:
+          '✓ Maska\n✓ Zoya Factor\n✓ Guilty\n✓ She\n✓ Billu\n✓ Deadline: Sirf 24 Ghante\n✓ The Lunchbox'
+      },
+      {
+        title: 'Movies/Shows to watch after boards',
+        description:
+          '☐ The high note\n☐ Martin\n☐ Kirk Douglas movies\n☐ I lost my body\n☐ Love Simon\n☐ Tumbbad'
+      }
+    ];
   }
 
-  fetchNotes() {
-    this.notesService.getNotesList().subscribe((res: any) => {
-      this.notes = res.data.data;
-    });
-  }
-
-  createNote() {
-    const payload = { title: this.title, description: this.description };
-    this.notesService.addNote(payload).subscribe(() => {
+  addNote() {
+    if (this.title.trim() || this.description.trim()) {
+      this.notes.unshift({ title: this.title, description: this.description });
       this.title = '';
       this.description = '';
-      this.fetchNotes();
-    });
+    }
   }
 
-  trash(note: any) {
-    this.notesService.trashNote({ noteIdList: [note.id], isDeleted: true }).subscribe(() => {
-      this.fetchNotes();
-    });
+  onEdit(note: Note) {
+    alert('Edit feature not implemented (placeholder).');
+  }
+
+  onSetReminder(note: Note) {
+    alert('Reminder set (placeholder).');
+  }
+
+  onDelete(note: Note) {
+    alert('Note moved to Trash (placeholder).');
   }
 }

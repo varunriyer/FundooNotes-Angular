@@ -1,36 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { NotesService } from 'src/app/core/services/notes.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-reminder',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './reminder.component.html',
   styleUrls: ['./reminder.component.css']
 })
 export class ReminderComponent implements OnInit {
-  reminders: any[] = [];
+  reminders = [
+    {
+      title: 'Call Doctor',
+      description: 'Don’t forget to book an appointment.',
+      due: 'Today at 6:00 PM'
+    },
+    {
+      title: 'Assignment Deadline',
+      description: 'Submit the Angular app on GitHub.',
+      due: 'Tomorrow at 9:00 AM'
+    }
+  ];
 
-  constructor(private notesService: NotesService) {}
-
-  ngOnInit(): void {
-    this.loadReminders();
-    setInterval(() => this.checkForDueReminders(), 30000); // check every 30s
-  }
-
-  loadReminders() {
-    this.notesService.getReminderNotesList().subscribe((res: any) => {
-      this.reminders = res.data.data;
-    });
-  }
-
-  checkForDueReminders() {
-    const now = new Date();
-    this.reminders.forEach(note => {
-      if (note.reminder) {
-        const reminderTime = new Date(note.reminder);
-        if (reminderTime <= now) {
-          alert(`Reminder: ${note.title || 'Your reminder is due!'}`);
-        }
-      }
-    });
-  }
+  ngOnInit(): void {}
 }

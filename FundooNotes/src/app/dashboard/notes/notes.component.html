@@ -1,13 +1,17 @@
-<div class="note-input">
-  <input [(ngModel)]="title" placeholder="Title" />
-  <textarea [(ngModel)]="description" placeholder="Take a note..."></textarea>
-  <button (click)="createNote()">Add Note</button>
+<div class="note-input-container">
+  <input [(ngModel)]="title" placeholder="Title" class="note-input-title" />
+  <textarea [(ngModel)]="description" placeholder="Take a note..." class="note-input-desc"></textarea>
+  <button (click)="addNote()">Add</button>
 </div>
 
-<div class="note-list">
+<div class="notes-container">
   <div class="note-card" *ngFor="let note of notes">
-    <h4>{{ note.title }}</h4>
-    <p>{{ note.description }}</p>
-    <button (click)="trash(note)">Trash</button>
+    <h3>{{ note.title }}</h3>
+    <p [innerText]="note.description"></p>
+    <div class="note-actions">
+      <button (click)="onEdit(note)"> Edit</button>
+      <button (click)="onSetReminder(note)"> Reminder</button>
+      <button (click)="onDelete(note)">Delete</button>
+    </div>
   </div>
 </div>

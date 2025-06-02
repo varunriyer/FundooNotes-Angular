@@ -1,6 +1,15 @@
-<nav class="navbar">
-  <a routerLink="/dashboard/notes">Notes</a>
-  <a routerLink="/dashboard/reminders">Reminders</a>
-  <a routerLink="/dashboard/trash">Trash</a>
-</nav>
-<router-outlet></router-outlet>
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <ul>
+      <li><a routerLink="/dashboard/notes" routerLinkActive="active">Notes</a></li>
+      <li><a routerLink="/dashboard/reminders" routerLinkActive="active">Reminders</a></li>
+      <li><a routerLink="/dashboard/trash" routerLinkActive="active">Trash</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,8 +1,11 @@
-<div class="trash-grid">
-  <div class="note-card" *ngFor="let note of trashedNotes">
-    <h4>{{ note.title }}</h4>
-    <p>{{ note.description }}</p>
-    <button (click)="restore(note)">Restore</button>
-    <button (click)="deleteForever(note)">Delete Forever</button>
+<h2 class="heading">Trash</h2>
+
+<div class="trash-container">
+  <div class="trash-card" *ngFor="let note of trashedNotes">
+    <h3>{{ note.title }}</h3>
+    <p [innerText]="note.description"></p>
+    <div class="trash-actions">
+      <button (click)="recoverNote(note)"> Recover</button>
+    </div>
   </div>
 </div>

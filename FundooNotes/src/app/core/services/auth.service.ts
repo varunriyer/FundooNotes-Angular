@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'https://fundoonotes.incubation.bridgelabz.com';
+  private baseUrl = 'https://fundoonotes.incubation.bridgelabz.com/api';
 
   constructor(private http: HttpClient) {}
 

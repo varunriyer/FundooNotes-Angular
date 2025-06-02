@@ -1,23 +1,70 @@
-.note-input {
-  max-width: 500px;
-  margin: 20px auto;
+.note-input-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  background: #fffef7;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
 }
 
-.note-list {
+.note-input-title,
+.note-input-desc {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+button {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.notes-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
   padding: 20px;
   justify-content: center;
 }
 
 .note-card {
+  width: 280px;
+  background: #fffffa;
+  border: 1px solid #ddd;
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.note-actions button {
+  font-size: 14px;
+  padding: 5px 8px;
+  background-color: #f0f0f0;
+  color: #333;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  width: 250px;
-  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.note-actions button:hover {
+  background-color: #e0e0e0;
 }
